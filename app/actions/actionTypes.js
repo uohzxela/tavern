@@ -1,0 +1,4 @@
+export const TOGGLE_FAVORITE = 'TOGGLE_FAVORITE';
+export const TOGGLE_ADD = 'TOGGLE_ADD';
+export const ACCEPT_TASK = 'ACCEPT_TASK';
+export const COMPLETE_TASK = 'COMPLETE_TASK';

@@ -1,15 +1,15 @@
 import * as types from './actionTypes';
 
-export function acceptTask(index) {
+export function acceptTask(token) {
   return {
     type: types.ACCEPT_TASK,
-    index: index
+    token: token
   };
 }
 
-export function completeTask(index) {
+export function completeTask(token) {
   return {
     type: types.COMPLETE_TASK,
-    index: index
+    token: token
   };
 }

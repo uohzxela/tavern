@@ -15,6 +15,8 @@ import { bindActionCreators } from 'redux';
 import * as communityActions from '../actions/communityActions';
 import { connect } from 'react-redux';
 
+import {Scene, Router, TabBar, Modal, Schema, Actions, Reducer} from 'react-native-router-flux'
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -84,23 +86,31 @@ export default class Community extends Component {
   }
 
   renderRow(rowData, sectionID, rowID) {
-    const photoUrl = rowData.photoUrl;
+    const user = this.props.users[rowData.userToken];
     return (
 
         <View style={styles.rowContainer}>
           <View style={{flexDirection: 'row'}}>
-       
-            <Image 
-              resizeMode={Image.resizeMode.contain} 
-              style={styles.userPhoto} 
-              source={{uri: rowData.photoUrl}} 
-            />
+            <TouchableHighlight
+              underlayColor="transparent"
+              onPress={Actions.otherProfile.bind(this, {userToken: rowData.userToken})}
+            >
+              <Image 
+                resizeMode={Image.resizeMode.contain} 
+                style={styles.userPhoto} 
+                source={{uri: user.photoUrl}} 
+              />
+            </TouchableHighlight>
          
             <View style={styles.userInfo}>
-              <Text style={styles.userName}> 
-                {rowData.name} 
-                <Text style={styles.userStatus}> {rowData.status}</Text>
-              </Text>
+              <TouchableHighlight
+                underlayColor="transparent"
+              >
+                <Text style={styles.userName}> 
+                  {user.name} 
+                  <Text style={styles.userStatus}> {rowData.status}</Text>
+                </Text>
+              </TouchableHighlight>
               <Text style={styles.time}>{rowData.time} </Text>
             </View>
           </View>
@@ -161,7 +171,8 @@ export default class Community extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  posts : state.community.posts
+  posts : state.community.posts,
+  users : state.users,
 })
 
 const mapDispatchToProps = (dispatch) => ({

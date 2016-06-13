@@ -13,9 +13,6 @@ import { bindActionCreators } from 'redux';
 import * as myProfileActions from '../actions/myProfileActions';
 import { connect } from 'react-redux';
 
-const shiraPhoto = "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/p320x320/1977107_10152627757458362_977960513_n.jpg?oh=186a0a878ee9c605a97959433d3cc66f&oe=5807910B";
-
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -123,11 +120,55 @@ export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedType: 0
+      selectedType: 0,
     }
   }
 
   renderRow(rowData, sectionID, rowID) {
+    let taskFooterMap = {};
+    taskFooterMap[2] = (
+      <View style={styles.rowFooter}>
+        <TouchableHighlight 
+          underlayColor="transparent"  
+          onPress={this.props.actions.acceptTask.bind(this, rowData.token)}
+          style={styles.actionIcon}
+        >
+          <Image 
+            source={
+              require('../../assets/images/add.png')
+            }
+          />
+        </TouchableHighlight>
+      </View>
+    );
+
+    taskFooterMap[1] = (
+      <View style={styles.rowFooter}>
+        <TouchableHighlight 
+          underlayColor="transparent"  
+          onPress={this.props.actions.acceptTask.bind(this, rowID)}
+          style={styles.actionIcon}
+        >
+        </TouchableHighlight>
+      </View>
+    );
+
+    taskFooterMap[0] = (
+      <View style={styles.rowFooter}>
+        <TouchableHighlight 
+          underlayColor="transparent"  
+          onPress={this.props.actions.completeTask.bind(this, rowData.token)}
+          style={styles.actionIcon}
+        >
+          <Image 
+            source={
+              require('../../assets/images/tick.png')
+            }
+          />
+        </TouchableHighlight>
+      </View>
+    );
+    const isMyProfile = this.getCurrentProfile().token === this.props.myProfile.token;
     return (
 
         <View style={styles.rowContainer}>
@@ -154,34 +195,7 @@ export default class Profile extends Component {
           <View >
             <Text style={styles.message}>{rowData.description} </Text>
           </View>
-          <View style={styles.rowFooter}>
-            <TouchableHighlight 
-              underlayColor="transparent"  
-              onPress={this.props.actions.acceptTask.bind(this, rowID)}
-              style={styles.actionIcon}
-            >
-              <Image 
-                source={
-                  !rowData.favorited ? 
-                  require('../../assets/images/favorite.png') : 
-                  require('../../assets/images/favorited.png')
-                }
-              />
-            </TouchableHighlight>
-            <TouchableHighlight 
-              underlayColor="transparent"  
-              onPress={this.props.actions.acceptTask.bind(this, rowID)}
-              style={styles.actionIcon}
-            >
-              <Image 
-                source={
-                  !rowData.added ? 
-                  require('../../assets/images/add.png') : 
-                  require('../../assets/images/tick.png')
-                }
-              />
-            </TouchableHighlight>
-          </View>
+          { (isMyProfile && this.state.selectedType !== 1) && taskFooterMap[this.state.selectedType] }
         </View>
 
 
@@ -192,11 +206,18 @@ export default class Profile extends Component {
     this.setState({selectedType: index});
   }
 
+  getCurrentProfile() {
+    const otherUserToken = this.props.navigationState.userToken;
+    const profile = otherUserToken ? this.props.users[otherUserToken] : this.props.myProfile;
+    return profile; 
+  }
+
   getTasks(index) {
+    const profile = this.getCurrentProfile();
     const taskTokens = {
-      0: this.props.myProfile.acceptedTasks,
-      1: this.props.myProfile.completedTasks,
-      2: this.props.myProfile.requests 
+      0: profile.acceptedTasks,
+      1: profile.completedTasks,
+      2: profile.requests 
     }
     const taskList = taskTokens[index].map((token) => {
       return this.props.tasks[token];
@@ -208,39 +229,40 @@ export default class Profile extends Component {
       rowHasChanged: (r1, r2) => r1 !== r2
     });
     dataSource = dataSource.cloneWithRows(this.getTasks(this.state.selectedType))
+    const profile = this.getCurrentProfile();
     return (
       <View style={styles.container}>
         <View style={styles.currentUserInfo}>
           <Image 
             resizeMode={Image.resizeMode.contain} 
             style={styles.myPhoto} 
-            source={{uri: shiraPhoto}} 
+            source={{uri: profile.photoUrl}} 
           />
           <View style={{flex: 1, flexDirection:'column'}}>
             <Text style={styles.myName}>
-              {this.props.myProfile.name}
+              {profile.name}
             </Text>
             <View style={{flex: 2}}>
-              <Text style={styles.myTeam}>Team: {this.props.myProfile.team}</Text>
+              <Text style={styles.myTeam}>Team: {profile.team}</Text>
             </View>
             <View>
               <View style={{flexDirection: 'row'}}>
                 <TypeText 
                   onPress={this.selectType.bind(this, 0)} 
                   isSelected={this.state.selectedType === 0} 
-                  count={this.props.myProfile.acceptedTasks.length} 
+                  count={profile.acceptedTasks.length} 
                   type="Accepted" 
                 />
                 <TypeText 
                   onPress={this.selectType.bind(this, 1)} 
                   isSelected={this.state.selectedType === 1} 
-                  count={this.props.myProfile.completedTasks.length} 
+                  count={profile.completedTasks.length} 
                   type="Completed" 
                 />
                 <TypeText 
                   onPress={this.selectType.bind(this, 2)} 
                   isSelected={this.state.selectedType === 2} 
-                  count={this.props.myProfile.requests.length} 
+                  count={profile.requests.length} 
                   type="Requests" 
                 />
               </View>
@@ -250,6 +272,7 @@ export default class Profile extends Component {
         <ListView
           dataSource={dataSource}
           renderRow={this.renderRow.bind(this)}
+          enableEmptySections={true}
         >
         </ListView>
       </View>

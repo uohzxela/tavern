@@ -31,7 +31,10 @@ export default class TavernApp extends Component {
         <Scene key="root">
           <Scene key="launch" component={Launch} title="Launch" initial={true} style={{flex:1, backgroundColor:'transparent'}}/>
           <Scene key="tabbar" tabs={true} style={{borderTopColor: "#ddd", borderTopWidth: 1, backgroundColor: '#EFEFF2'}}>
-              <Scene key="community"  title="Community" icon={TabIcon} component={Community} />
+              <Scene key="communityTab"  title="Community" icon={TabIcon}>
+                <Scene key="community" title="Community" component={Community} />
+                <Scene key="otherProfile" title="Profile" component={Profile} />
+              </Scene>
               <Scene key="profile" title="Profile" icon={TabIcon} component={Profile}/>
               <Scene key="createTask" component={CreateTask} title="Create Task" icon={TabIcon} onRight={()=>alert("Create task")} rightTitle="Done" />
               <Scene key="donate" component={PageOne} title="Donate" icon={TabIcon} />

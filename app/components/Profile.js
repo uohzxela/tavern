@@ -13,6 +13,8 @@ import { bindActionCreators } from 'redux';
 import * as myProfileActions from '../actions/myProfileActions';
 import { connect } from 'react-redux';
 
+import {AchievementScrollViews} from './Achievements';
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -81,7 +83,7 @@ const styles = StyleSheet.create({
   },
   typeText: {
     textAlign: 'center',
-    fontSize: 15
+    fontSize: 12
   },
   typeCountText: {
     textAlign: 'center',
@@ -89,7 +91,7 @@ const styles = StyleSheet.create({
   },
   typeTextSelected: {
     textAlign: 'center',
-    fontSize: 15,
+    fontSize: 12,
     color: '#087EFF'
   },
   typeCountTextSelected: {
@@ -116,11 +118,16 @@ const styles = StyleSheet.create({
   }
 });
 
+const ACCEPTED = 0,
+      COMPLETED = 1,
+      REQUESTS = 2,
+      ACHIEVEMENTS = 3;
+
 export default class Profile extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selectedType: 0,
+      selectedType: ACCEPTED,
     }
   }
 
@@ -195,7 +202,8 @@ export default class Profile extends Component {
           <View >
             <Text style={styles.message}>{rowData.description} </Text>
           </View>
-          { (isMyProfile && this.state.selectedType !== 1) && taskFooterMap[this.state.selectedType] }
+          { (!this.props.navigationState.userToken && this.state.selectedType !== COMPLETED) && 
+            taskFooterMap[this.state.selectedType] }
         </View>
 
 
@@ -219,16 +227,17 @@ export default class Profile extends Component {
       1: profile.completedTasks,
       2: profile.requests 
     }
+    if (!taskTokens[index]) return null;
     const taskList = taskTokens[index].map((token) => {
       return this.props.tasks[token];
     });
     return taskList;
   }
   render() {
+    const isMyProfile = this.getCurrentProfile().token === this.props.myProfile.token;
     let dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
-    dataSource = dataSource.cloneWithRows(this.getTasks(this.state.selectedType))
     const profile = this.getCurrentProfile();
     return (
       <View style={styles.container}>
@@ -248,33 +257,46 @@ export default class Profile extends Component {
             <View>
               <View style={{flexDirection: 'row'}}>
                 <TypeText 
-                  onPress={this.selectType.bind(this, 0)} 
-                  isSelected={this.state.selectedType === 0} 
+                  onPress={this.selectType.bind(this, ACCEPTED)} 
+                  isSelected={this.state.selectedType === ACCEPTED} 
                   count={profile.acceptedTasks.length} 
                   type="Accepted" 
                 />
                 <TypeText 
-                  onPress={this.selectType.bind(this, 1)} 
-                  isSelected={this.state.selectedType === 1} 
+                  onPress={this.selectType.bind(this, COMPLETED)} 
+                  isSelected={this.state.selectedType === COMPLETED} 
                   count={profile.completedTasks.length} 
                   type="Completed" 
                 />
-                <TypeText 
-                  onPress={this.selectType.bind(this, 2)} 
-                  isSelected={this.state.selectedType === 2} 
-                  count={profile.requests.length} 
-                  type="Requests" 
-                />
+                { this.props.navigationState.userToken ?
+                  <TypeText 
+                    onPress={this.selectType.bind(this, ACHIEVEMENTS)} 
+                    isSelected={this.state.selectedType === ACHIEVEMENTS} 
+                    count={profile.achievementsEarned.length} 
+                    type="Achievements" 
+                  /> :
+
+                  <TypeText 
+                    onPress={this.selectType.bind(this, REQUESTS)} 
+                    isSelected={this.state.selectedType === REQUESTS} 
+                    count={profile.requests.length} 
+                    type="Requests" 
+                  />
+                }
               </View>
             </View>
           </View>
         </View>
-        <ListView
-          dataSource={dataSource}
-          renderRow={this.renderRow.bind(this)}
-          enableEmptySections={true}
-        >
-        </ListView>
+        { this.state.selectedType !== ACHIEVEMENTS ?
+          <ListView
+            dataSource={dataSource.cloneWithRows(this.getTasks(this.state.selectedType))}
+            renderRow={this.renderRow.bind(this)}
+            enableEmptySections={true}
+          /> :
+          <AchievementScrollViews {...this.props} userToken={this.getCurrentProfile().token} />
+        }
+        
+
       </View>
     )
   }
@@ -312,7 +334,8 @@ class TypeText extends Component {
 const mapStateToProps = (state) => ({
   myProfile : state.myProfile,
   users: state.users,
-  tasks: state.tasks
+  tasks: state.tasks,
+  achievements: state.achievements,
 })
 
 const mapDispatchToProps = (dispatch) => ({

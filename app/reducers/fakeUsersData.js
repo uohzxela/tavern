@@ -20,7 +20,9 @@ export const fakeUsersData = {
     acceptedTasks: ["task1", "task2"],
     completedTasks: [],
     requests: ["task0"],
-    token: 'user1'
+    token: 'user1',
+    achievementsInProgress: ['achv0'],
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
   },
   user2: {
     name: "Yan Tianqi",
@@ -29,7 +31,9 @@ export const fakeUsersData = {
     acceptedTasks: ["task1"],
     completedTasks: [],
     requests: [],
-    token: 'user2'
+    token: 'user2',
+    achievementsInProgress: ['achv0'],
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
   },
   user3: {
     name: "Misa Truong",
@@ -38,7 +42,9 @@ export const fakeUsersData = {
     acceptedTasks: ["task0", "task1"],
     completedTasks: [],
     requests: [],
-    token: 'user3'
+    token: 'user3',
+    achievementsInProgress: ['achv0'],
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
   },
   user4: {
     name: "Tom Kosnik",
@@ -47,6 +53,8 @@ export const fakeUsersData = {
     acceptedTasks: ["task0", "task1"],
     completedTasks: [],
     requests: [],
-    token: 'user4'
+    token: 'user4',
+    achievementsInProgress: ['achv0'],
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
   },
 };

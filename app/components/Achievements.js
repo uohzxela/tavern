@@ -6,8 +6,13 @@ import {
   View,
   ScrollView,
   Dimensions,
-  Image
+  Image,
+  TouchableHighlight,
+  Modal
 } from 'react-native';
+
+import Button from 'react-native-button';
+import ModalBox from './ModalBox';
 
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
@@ -44,7 +49,8 @@ const styles = StyleSheet.create({
   },
   cardText: {
     fontSize: 18,
-    color: "#087EFF"
+    color: "#087EFF",
+    textAlign: 'center'
   },
   scrollContainer: {
     flex: 1,
@@ -56,6 +62,15 @@ const styles = StyleSheet.create({
     fontSize: 25, 
     marginBottom: 10,
     color: "#087EFF"
+  },
+  modalTitle: {
+    fontSize: 25,
+  },
+  modalDescription: {
+    fontSize: 16
+  },
+  modalPhoto: {
+    marginVertical: 10
   }
 });
 
@@ -74,50 +89,102 @@ export default class Achievements extends Component {
 }
 
 export class AchievementScrollViews extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      modalVisible: false,
+    };
+  }
+  setModalVisible(visible) {
+    this.setState({
+      modalVisible: visible,
+    });
+  }
 
+  showModal(token) {
+    this.setModalVisible(true);
+    this.setState({
+      modalVisible: true,
+      achievement: this.props.achievements[token]
+    })
+  }
   render() {
     let achievementsInProgress, achievementsEarned;
     const currentUser = this.props.myProfile;
     achievementsInProgress = currentUser.achievementsInProgress.map((token) => {
       const achievement = this.props.achievements[token];
       return (
-        <View key={token} style={styles.cardContainer}>
-          { achievement.photoUrl ?
-            <Image 
-              style={styles.card} 
-              resizeMode={Image.resizeMode.cover} 
-              source={{uri: achievement.photoUrl}} 
-            />
-            :
-            <View style={styles.card}>
-              <Text style={styles.count}>{achievement.count}</Text>
-            </View>
-          }
-          <Text style={styles.cardText}>{achievement.name}</Text>
-        </View>
+        <TouchableHighlight 
+          key={token} 
+          onPress={this.showModal.bind(this, token)}
+          underlayColor={'transparent'}
+          >
+          <View style={styles.cardContainer} >
+            { achievement.photoUrl ?
+              <Image 
+                style={styles.card} 
+                resizeMode={Image.resizeMode.cover} 
+                source={{uri: achievement.photoUrl}} 
+              />
+              :
+              <View style={styles.card}>
+                <Text style={styles.count}>{achievement.count}</Text>
+              </View>
+            }
+            <Text style={styles.cardText}>{achievement.name}</Text>
+          </View>
+        </TouchableHighlight>
       )
     });
     achievementsEarned = currentUser.achievementsEarned.map((token) => {
       const achievement = this.props.achievements[token];
       return (
-        <View key={token} style={styles.cardContainer}>
-          { achievement.photoUrl ?
-            <Image 
-              style={styles.card} 
-              resizeMode={Image.resizeMode.cover} 
-              source={{uri: achievement.photoUrl}} 
-            />
-            :
-            <View style={styles.card}>
-              <Text style={styles.count}>{achievement.count}</Text>
-            </View>
-          }
-          <Text style={styles.cardText}>{achievement.name}</Text>
-        </View>
+        <TouchableHighlight 
+          key={token}           
+          onPress={this.showModal.bind(this, token)}
+          underlayColor={'transparent'}
+          >
+          <View style={styles.cardContainer} >
+            { achievement.photoUrl ?
+              <Image 
+                style={styles.card} 
+                resizeMode={Image.resizeMode.cover} 
+                source={{uri: achievement.photoUrl}} 
+              />
+              :
+              <View style={styles.card}>
+                <Text style={styles.count}>{achievement.count}</Text>
+              </View>
+            }
+            <Text style={styles.cardText}>{achievement.name}</Text>
+          </View>
+        </TouchableHighlight>
       )
     });
     return(
       <View>
+        <ModalBox 
+          onClose={this.setModalVisible.bind(this, false)} 
+          visible={this.state.modalVisible}
+        >
+          <Text style={styles.modalTitle}> 
+            {this.state.achievement && this.state.achievement.name} 
+          </Text>
+          { this.state.achievement && this.state.achievement.photoUrl ?
+            <Image 
+              style={[styles.card, styles.modalPhoto]} 
+              resizeMode={Image.resizeMode.cover} 
+              source={{uri: this.state.achievement.photoUrl}} 
+            />
+            :
+            <View style={[styles.card, styles.modalPhoto]}>
+              <Text style={styles.count}>{this.state.achievement && this.state.achievement.count}</Text>
+            </View>
+          }
+          <Text style={styles.modalDescription}> 
+            {this.state.achievement && this.state.achievement.description} 
+          </Text>
+        </ModalBox>
         <View style={{paddingTop: 20}}>
           <Text style={styles.achievementText}>Achievements In Progress </Text>
           <ScrollView

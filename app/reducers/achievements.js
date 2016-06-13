@@ -23,26 +23,26 @@ const initialState = {
     photoUrl: cookiePhoto,
     token: 'achv2'
   },
-  achv2: {
+  achv3: {
     name: "Complete 10",
     description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
     photoUrl: null,
     count: 10,
-    token: 'achv2'
+    token: 'achv3'
   },
-  achv3: {
+  achv4: {
     name: "Complete 25",
     description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
     photoUrl: null,
     count: 25,
-    token: 'achv3'
+    token: 'achv4'
   },
-  achv4: {
+  achv5: {
     name: "Complete 50",
     description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
     photoUrl: null,
     count: 50,
-    token: 'achv4'
+    token: 'achv5'
   },
 };
 

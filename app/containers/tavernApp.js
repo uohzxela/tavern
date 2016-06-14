@@ -15,6 +15,7 @@ import Profile from '../components/Profile';
 import CreateTask from '../components/CreateTask';
 import Achievements from '../components/Achievements';
 import Community from '../components/Community';
+import Volunteer from '../components/Volunteer';
 
 class TabIcon extends React.Component {
     render(){
@@ -37,7 +38,7 @@ export default class TavernApp extends Component {
               </Scene>
               <Scene key="profile" title="Profile" icon={TabIcon} component={Profile}/>
               <Scene key="createTask" component={CreateTask} title="Create Task" icon={TabIcon} onRight={()=>alert("Create task")} rightTitle="Done" />
-              <Scene key="donate" component={PageOne} title="Donate" icon={TabIcon} />
+              <Scene key="volunteer" component={Volunteer} title="Volunteer" icon={TabIcon} />
               <Scene key="achievements" component={Achievements} title="Achievements" icon={TabIcon} />
           </Scene>
         </Scene>

@@ -11,7 +11,9 @@ export const fakeUsersData = {
     acceptedTasks: ["task0", "task1"],
     completedTasks: [],
     requests: [],
-    token: 'user0'
+    token: 'user0',
+    achievementsInProgress: ['achv0'],
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
   },
   user1: {
     name: "Hirokazu Shirasuna",
@@ -22,7 +24,7 @@ export const fakeUsersData = {
     requests: ["task0"],
     token: 'user1',
     achievementsInProgress: ['achv0'],
-    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4', 'achv5']
   },
   user2: {
     name: "Yan Tianqi",

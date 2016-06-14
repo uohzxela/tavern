@@ -8,8 +8,6 @@ import React, { Component } from 'react';
 import { Text, Image } from 'react-native';
 import {Scene, Router, TabBar, Modal, Schema, Actions, Reducer} from 'react-native-router-flux'
 
-import PageOne from '../../PageOne';
-import PageTwo from '../../PageTwo';
 import Launch from '../components/Launch';
 import Profile from '../components/Profile';
 import CreateTask from '../components/CreateTask';

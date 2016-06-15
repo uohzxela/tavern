@@ -25,7 +25,14 @@ const initialState = {
     timeLimit: null,
     photoUrl: cookiePhoto,
     token: 'task2'
-  }
+  },
+  task3: {
+    name: "Hold the Door!",
+    description: "Hold the door for 5 people in a day. Why? Because Hodor, 'nuff said.",
+    timeLimit: "24 hrs",
+    photoUrl: "https://pbs.twimg.com/media/CjGzLSoXAAk5bkZ.jpg",
+    token: 'task3'
+  },
 };
 
 export default function tasks(state = initialState, action = {}) {

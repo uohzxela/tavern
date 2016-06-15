@@ -13,7 +13,8 @@ export const fakeUsersData = {
     requests: [],
     token: 'user0',
     achievementsInProgress: ['achv0'],
-    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4'],
+    bio: "jack of all trades"
   },
   user1: {
     name: "Hirokazu Shirasuna",
@@ -24,7 +25,8 @@ export const fakeUsersData = {
     requests: ["task0"],
     token: 'user1',
     achievementsInProgress: ['achv0'],
-    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4', 'achv5']
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4', 'achv5'],
+    bio: "product manager at Picsart"
   },
   user2: {
     name: "Yan Tianqi",
@@ -35,7 +37,8 @@ export const fakeUsersData = {
     requests: [],
     token: 'user2',
     achievementsInProgress: ['achv0'],
-    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4'],
+    bio: "data lover"
   },
   user3: {
     name: "Misa Truong",
@@ -46,7 +49,8 @@ export const fakeUsersData = {
     requests: [],
     token: 'user3',
     achievementsInProgress: ['achv0'],
-    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4'],
+    bio: "Aspiring artist"
   },
   user4: {
     name: "Tom Kosnik",
@@ -57,6 +61,7 @@ export const fakeUsersData = {
     requests: [],
     token: 'user4',
     achievementsInProgress: ['achv0'],
-    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4']
+    achievementsEarned: ['achv1', 'achv2', 'achv3', 'achv4'],
+    bio: "I love mentoring startup founders!"
   },
 };

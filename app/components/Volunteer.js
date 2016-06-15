@@ -111,8 +111,6 @@ var styles = StyleSheet.create({
         flexWrap: 'wrap', 
         flexDirection: 'row', 
         flex: 1, 
-        alignItems: 'center', 
-        justifyContent: 'center',
         marginBottom: 50
     },
     orgName: {

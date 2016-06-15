@@ -28,7 +28,7 @@ const initialState = {
   org4: {
     name: "Doctor Without Borders",
     description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
-    photoUrl: "http://www.globalresearch.ca/wp-content/uploads/2015/11/doctors-without-borders-400x264.png",
+    photoUrl: "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/p320x320/11041567_10153008302732385_5012964870070649179_n.png?oh=a329c2357cd25a857a47f4bdbf5ccd3f&oe=57CE6AEF",
     token: 'org4'
   },
   org5: {

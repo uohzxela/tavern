@@ -83,7 +83,7 @@ class AchievementsIcon extends React.Component {
 
 const scenes = Actions.create(
   <Scene key="root">
-    <Scene key="launch" component={Launch} title="Launch" initial={true} style={{flex:1, backgroundColor:'transparent'}}/>
+    <Scene key="launch" hideNavBar={true} duration={1} component={Launch} title="Launch" initial={true} style={{flex:1, backgroundColor:'transparent'}}/>
     <Scene key="tabbar" tabs={true} style={{borderTopColor: "#ddd", borderTopWidth: 1, backgroundColor: '#EFEFF2'}}>
         <Scene key="communityTab"  title="Community" icon={CommunityIcon}>
           <Scene key="community" title="Community" component={Community} />

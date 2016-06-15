@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignSelf: 'flex-end',
     height: 20,
-    marginBottom: -5
   },
   userPhoto: {
     width: 40,
@@ -73,11 +72,32 @@ const styles = StyleSheet.create({
     borderLeftColor: "#ddd",
     padding: 10
   },
-  actionIcon: {
-    marginHorizontal: 10,
-    marginVertical: 5,
-    width: 20
+  favIcon: {
+    width: 20,
+    height: 20,
+    marginRight: 5
+  },
+  addIcon: {
+    width: 15,
+    height: 15,
+  },
+  actionIconContainer: {
+    borderWidth: 1,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    flexDirection:'row', 
+    justifyContent: 'center',
+    alignItems: 'center', 
+    // backgroundColor: 'pink',
+    padding: 10,
+    height: 30,
+    marginLeft: 10,
+  },
+  favCount: {
+    fontSize: 14,
+    marginTop: 1
   }
+
 });
 
 export default class Community extends Component {
@@ -118,23 +138,11 @@ export default class Community extends Component {
             <Text style={styles.message}>{rowData.message} </Text>
           </View>
           <View style={styles.rowFooter}>
-            <TouchableHighlight 
-              underlayColor="transparent"  
-              onPress={this.props.actions.toggleFavorite.bind(this, rowID)}
-              style={styles.actionIcon}
-            >
-              <Image 
-                source={
-                  !rowData.favorited ? 
-                  require('../../assets/images/favorite.png') : 
-                  require('../../assets/images/favorited.png')
-                }
-              />
-            </TouchableHighlight>
+            <FavIcon />
             <TouchableHighlight 
               underlayColor="transparent"  
               onPress={this.props.actions.toggleAdd.bind(this, rowID)}
-              style={styles.actionIcon}
+              style={styles.actionIconContainer}
             >
               <Image 
                 source={
@@ -142,6 +150,8 @@ export default class Community extends Component {
                   require('../../assets/images/add.png') : 
                   require('../../assets/images/tick.png')
                 }
+                resizeMode={Image.resizeMode.contain} 
+                style={styles.addIcon}
               />
             </TouchableHighlight>
           </View>
@@ -180,3 +190,47 @@ const mapDispatchToProps = (dispatch) => ({
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Community);
+
+class FavIcon extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      count: Math.floor(Math.random() * 100),
+      favorited: false
+    }
+  }
+
+  toggleFavorite() {
+    const newState = !this.state.favorited;
+    this.setState({
+      favorited: newState,
+      count: this.state.count + (newState ? 1 : -1)
+    });
+  }
+  render() {
+
+    return(
+      <TouchableHighlight 
+        underlayColor="transparent"  
+        onPress={this.toggleFavorite.bind(this)}
+      >
+        <View style={styles.actionIconContainer}>
+          <Image 
+            source={
+              !this.state.favorited ? 
+              require('../../assets/images/favorite.png') : 
+              require('../../assets/images/favorited.png')
+            }
+            resizeMode={Image.resizeMode.contain} 
+            style={styles.favIcon}
+          />
+          <Text 
+            style={[styles.favCount, {color: this.state.favorited ? "black" : "#999"}]}
+            >
+            {this.state.count}
+          </Text>
+        </View>
+      </TouchableHighlight>
+    )
+  }
+}

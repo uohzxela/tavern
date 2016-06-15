@@ -1,7 +1,7 @@
 import * as types from '../actions/actionTypes';
 import {fakeUsersData} from './fakeUsersData';
 
-export default function myProfile(state = fakeUsersData.user1, action = {}) {
+export default function me(state = fakeUsersData.user1, action = {}) {
   let accepted, completed, requests, index;
   switch (action.type) {
     case types.ACCEPT_TASK:

@@ -92,7 +92,7 @@ export default class FindCompanions extends Component {
           <View style={{flexDirection: 'row'}}>
             <TouchableHighlight
               underlayColor="transparent"
-              onPress={Actions.otherProfile.bind(this, {userToken: rowData.userToken})}
+              onPress={Actions.otherProfile_Task.bind(this, {userToken: user.token})}
             >
               <Image 
                 resizeMode={Image.resizeMode.cover} 

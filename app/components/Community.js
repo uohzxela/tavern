@@ -29,12 +29,14 @@ const styles = StyleSheet.create({
     padding: 20,
     borderBottomColor: '#ddd',
     borderBottomWidth: 1,
-
+    paddingBottom: 30
   },
   rowFooter: {
     flexDirection: 'row',
     alignSelf: 'flex-end',
     height: 20,
+    paddingBottom: 10,
+
   },
   userPhoto: {
     width: 40,
@@ -91,7 +93,9 @@ const styles = StyleSheet.create({
     // backgroundColor: 'pink',
     padding: 10,
     height: 30,
+    marginTop: 10,
     marginLeft: 10,
+    marginBottom: 10
   },
   favCount: {
     fontSize: 14,

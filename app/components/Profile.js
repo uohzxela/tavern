@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 import { bindActionCreators } from 'redux';
-import * as myProfileActions from '../actions/myProfileActions';
+import * as myActions from '../actions/myActions';
 import { connect } from 'react-redux';
 
 import {AchievementScrollViews} from './Achievements';
@@ -175,7 +175,7 @@ export default class Profile extends Component {
         </TouchableHighlight>
       </View>
     );
-    const isMyProfile = this.getCurrentProfile().token === this.props.myProfile.token;
+    const isMyProfile = this.getCurrentProfile().token === this.props.me.token;
     return (
 
         <View style={styles.rowContainer}>
@@ -216,7 +216,7 @@ export default class Profile extends Component {
 
   getCurrentProfile() {
     const otherUserToken = this.props.navigationState.userToken;
-    const profile = otherUserToken ? this.props.users[otherUserToken] : this.props.myProfile;
+    const profile = otherUserToken ? this.props.users[otherUserToken] : this.props.me;
     return profile; 
   }
 
@@ -234,7 +234,7 @@ export default class Profile extends Component {
     return taskList;
   }
   render() {
-    const isMyProfile = this.getCurrentProfile().token === this.props.myProfile.token;
+    const isMyProfile = this.getCurrentProfile().token === this.props.me.token;
     let dataSource = new ListView.DataSource({
       rowHasChanged: (r1, r2) => r1 !== r2
     });
@@ -332,14 +332,14 @@ class TypeText extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  myProfile : state.myProfile,
+  me : state.me,
   users: state.users,
   tasks: state.tasks,
   achievements: state.achievements,
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  actions : bindActionCreators(myProfileActions, dispatch)
+  actions : bindActionCreators(myActions, dispatch)
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

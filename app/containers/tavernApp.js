@@ -94,7 +94,7 @@ const scenes = Actions.create(
           <Scene key="dailyTask" component={DailyTask} title="Daily Task" />
           <Scene key="createTask" component={CreateTask} title="Create Task" onRight={()=>{Actions.findCompanions()}} rightTitle="Next" />
           <Scene key="findCompanions" component={FindCompanions} title="Find Companions" onRight={()=>alert("Task created!")} rightTitle="Done" />
-          <Scene key="otherProfile" title="Profile" component={Profile} />
+          <Scene key="otherProfile_Task" title="Profile" component={Profile} />
         </Scene>    
         <Scene key="volunteer" component={Volunteer} title="Volunteer" icon={VolunteerIcon} />
         <Scene key="achievements" component={Achievements} title="Achievements" icon={AchievementsIcon} />

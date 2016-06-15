@@ -1,5 +1,5 @@
 import community from './community';
-import myProfile from './myProfile';
+import me from './me';
 import users from './users';
 import tasks from './tasks';
 import achievements from './achievements';
@@ -7,7 +7,7 @@ import organizations from './organizations';
 
 export {
   community,
-  myProfile,
+  me,
   users,
   tasks,
   achievements,

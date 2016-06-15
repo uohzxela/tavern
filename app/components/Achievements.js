@@ -110,7 +110,7 @@ export class AchievementScrollViews extends Component {
   }
   render() {
     let achievementsInProgress, achievementsEarned;
-    const currentUser = this.props.myProfile;
+    const currentUser = this.props.me;
     achievementsInProgress = currentUser.achievementsInProgress.map((token) => {
       const achievement = this.props.achievements[token];
       return (
@@ -210,7 +210,7 @@ export class AchievementScrollViews extends Component {
 
 const mapStateToProps = (state) => ({
   achievements: state.achievements,
-  myProfile: state.myProfile,
+  me: state.me,
   users : state.users,
 })
 

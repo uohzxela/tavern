@@ -7,39 +7,39 @@ const bottlePhoto = "https://external-lax3-1.xx.fbcdn.net/safe_image.php?d=AQAZA
 const initialState = {
   achv0: {
     name: "Bottle Master",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "Through many trials and tribulations, you have finally emerged from your bottle recycling training to become the Bottle Master.",
     photoUrl: bottlePhoto,
     token: 'achv0'
   },
   achv1: {
-    name: "Cat Rescue",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    name: "Cat Guardian",
+    description: "Humans adore you. Cats adore you. You are the Cat Guardian. Go save some more of those cats yo.",
     photoUrl: catPhoto,
     token: 'achv1'
   },
   achv2: {
     name: "Cookie Man",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "I bet you have given out so many cookies that you forgot to treat yourself to some. So here is a cookie. For your accomplishment.",
     photoUrl: cookiePhoto,
     token: 'achv2'
   },
   achv3: {
     name: "Complete 10",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "Good going, but 10 seems like a pretty small number, don't you think?",
     photoUrl: null,
     count: 10,
     token: 'achv3'
   },
   achv4: {
     name: "Complete 25",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "You have shown some promise, but 25 ain't gonna cut it.",
     photoUrl: null,
     count: 25,
     token: 'achv4'
   },
   achv5: {
     name: "Complete 50",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: 'The 50th episode of Seinfeld is titled "The Virgin." I truly hope you lost your virginity already. One act of altruism makes you mildly attractive. Fifty acts of altruism makes you an Adonis.',
     photoUrl: null,
     count: 50,
     token: 'achv5'

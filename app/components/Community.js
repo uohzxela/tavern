@@ -120,7 +120,7 @@ export default class Community extends Component {
               onPress={Actions.otherProfile.bind(this, {userToken: rowData.userToken})}
             >
               <Image 
-                resizeMode={Image.resizeMode.contain} 
+                resizeMode={Image.resizeMode.cover} 
                 style={styles.userPhoto} 
                 source={{uri: user.photoUrl}} 
               />

@@ -122,7 +122,8 @@ var styles = StyleSheet.create({
         fontSize: 25,
     },
     modalDescription: {
-        fontSize: 16
+        fontSize: 16,
+        marginBottom: 10
     },
     modalPhoto: {
         marginVertical: 10

@@ -7,21 +7,21 @@ const bottlePhoto = "https://external-lax3-1.xx.fbcdn.net/safe_image.php?d=AQAZA
 const initialState = {
   task0: {
     name: "Recycle 20 bottles in 1 week",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "The title is self-explanatory. Do I really need to explain it to you?",
     timeLimit: "1 week",
     photoUrl: bottlePhoto,
     token: 'task0'
   },
   task1: {
     name: "Cat Rescue",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "Cats are really, really cute. Why don't you go rescue some cats?",
     timeLimit: "24 hrs",
     photoUrl: catPhoto,
     token: 'task1'
   },
   task2: {
     name: "Cookie Man",
-    description: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.",
+    description: "You ain't a Cookie Man without giving out some free cookies to your colleagues.",
     timeLimit: null,
     photoUrl: cookiePhoto,
     token: 'task2'

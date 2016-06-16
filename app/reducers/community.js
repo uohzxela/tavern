@@ -6,7 +6,7 @@ const initialState = {
       id: 0, 
       userToken: "user1", 
       status: 'completed the "Recycle 20 bottles in 1 week" challenge!',
-      message: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.", 
+      message: "Wow. First time I've ever recycled that many bottles in my life. Seriously Tavern makes my life much better. I am now a happier man.", 
       favorited: false, 
       added: false, 
       time: "1 min"
@@ -15,7 +15,7 @@ const initialState = {
       id: 1,  
       userToken: "user0", 
       status: 'finished his first volunteer trip to an animal shelter!',
-      message: "Cliche lo-fi yr taxidermy biodiesel chia. Squid salvia bushwick portland, retro austin four dollar toast post-ironic meggings chillwave stumptown.", 
+      message: "I highly recommend this volunteer trip. I learnt a lot about the lives of stray animals, and how to take care of them. I even adopted a kitty. Haha.", 
       favorited: false, 
       added: false, 
       time: "10 min"
@@ -24,34 +24,34 @@ const initialState = {
       id: 2, 
       userToken: "user2", 
       status: 'earned the title: Cookie Man by giving out 20 cookies!',
-      message: "Art party cornhole four loko, artisan synth try-hard raw denim. Mlkshk quinoa venmo, leggings yuccie marfa gochujang tilde chicharrones messenger bag. ", 
+      message: "Who wants more of my cookies? I still have dozens of cookies left over at home... It's all free!", 
       favorited: false, 
       added: false, 
       time: "21 hrs"
     },
     {
       id: 0, 
-      userToken: "user1", 
+      userToken: "user3", 
       status: 'has just completed the "Recycle 20 bottles in 1 week" challenge!',
-      message: "Keytar seitan affogato paleo. Mustache kinfolk pinterest try-hard lo-fi actually. Tumblr letterpress portland, williamsburg godard biodiesel stumptown schlitz tilde bespoke gochujang crucifix lumbersexual DIY farm-to-table.", 
+      message: "Do not underestimate this challenge. Recycling 1 bottle is no mean feat already.", 
       favorited: false, 
       added: false, 
       time: "1 min"
     },
     {
       id: 1,  
-      userToken: "user0", 
+      userToken: "user1", 
       status: 'finished his first volunteer trip to an animal shelter!',
-      message: "Cliche lo-fi yr taxidermy biodiesel chia. Squid salvia bushwick portland, retro austin four dollar toast post-ironic meggings chillwave stumptown.", 
+      message: "I am very happy today. I adopted a dog!", 
       favorited: false, 
       added: false, 
       time: "10 min"
     },
     {
       id: 2, 
-      userToken: "user2", 
+      userToken: "user4", 
       status: 'earned the title: Cookie Man by giving out 20 cookies!',
-      message: "Art party cornhole four loko, artisan synth try-hard raw denim. Mlkshk quinoa venmo, leggings yuccie marfa gochujang tilde chicharrones messenger bag. ", 
+      message: "I think I'm actually born to be a Cookie Man ever since I started this journey. Thanks Tavern.", 
       favorited: false, 
       added: false, 
       time: "21 hrs"

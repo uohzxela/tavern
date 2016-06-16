@@ -7,7 +7,7 @@ export const fakeUsersData = {
   user0: {
     name: "Kelvin Koa",
     team: "Engineering",
-    photoUrl: random1,
+    photoUrl: "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/p320x320/11140073_10153842338282729_8305250301472142611_n.jpg?oh=83034e7868ffa584bf112a3607a1cf74&oe=57C1575B",
     acceptedTasks: ["task0", "task1"],
     completedTasks: [],
     requests: [],
@@ -31,7 +31,7 @@ export const fakeUsersData = {
   user2: {
     name: "Yan Tianqi",
     team: "Data Science",
-    photoUrl: random1,
+    photoUrl: "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/p320x320/12274672_10207534892397672_5752122759331273895_n.jpg?oh=fc6685f3dc8a054c95130f3acf325d4a&oe=57D709EA",
     acceptedTasks: ["task1"],
     completedTasks: [],
     requests: [],
@@ -55,7 +55,7 @@ export const fakeUsersData = {
   user4: {
     name: "Tom Kosnik",
     team: "Stanford",
-    photoUrl: random1,
+    photoUrl: "https://scontent-atl3-1.xx.fbcdn.net/v/t1.0-1/c0.67.320.320/p320x320/12920359_10157052857975179_6636440801707457682_n.jpg?oh=a5c2b7f136d4f1a9b982c936522ec85e&oe=57E4D50D",
     acceptedTasks: ["task0", "task1"],
     completedTasks: [],
     requests: [],

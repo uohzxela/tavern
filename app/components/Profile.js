@@ -8,6 +8,8 @@ import {
   TouchableHighlight,
   Image,
 } from 'react-native';
+import Button from 'react-native-button';
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 import { bindActionCreators } from 'redux';
 import * as myActions from '../actions/myActions';
@@ -115,6 +117,12 @@ const styles = StyleSheet.create({
     fontSize: 20, 
     textAlign:'center', 
     marginVertical: 10
+  },
+  shareButton: {
+      backgroundColor: '#4A90E2',
+      borderRadius: 5,
+      paddingHorizontal: 10,
+      paddingVertical: 5
   }
 });
 
@@ -133,7 +141,7 @@ export default class Profile extends Component {
 
   renderRow(rowData, sectionID, rowID) {
     let taskFooterMap = {};
-    taskFooterMap[2] = (
+    taskFooterMap[REQUESTS] = (
       <View style={styles.rowFooter}>
         <TouchableHighlight 
           underlayColor="transparent"  
@@ -149,18 +157,15 @@ export default class Profile extends Component {
       </View>
     );
 
-    taskFooterMap[1] = (
+    taskFooterMap[COMPLETED] = (
       <View style={styles.rowFooter}>
-        <TouchableHighlight 
-          underlayColor="transparent"  
-          onPress={this.props.actions.acceptTask.bind(this, rowID)}
-          style={styles.actionIcon}
-        >
+        <TouchableHighlight underlayColor="transparent" onPress={()=>{}}>
+          <Icon style={{fontSize: 25, color: "#087EFF"}} name="share-square-o" />
         </TouchableHighlight>
       </View>
     );
 
-    taskFooterMap[0] = (
+    taskFooterMap[ACCEPTED] = (
       <View style={styles.rowFooter}>
         <TouchableHighlight 
           underlayColor="transparent"  
@@ -202,7 +207,7 @@ export default class Profile extends Component {
           <View >
             <Text style={styles.message}>{rowData.description} </Text>
           </View>
-          { (!this.props.navigationState.userToken && this.state.selectedType !== COMPLETED) && 
+          { (!this.props.navigationState.userToken) && 
             taskFooterMap[this.state.selectedType] }
         </View>
 

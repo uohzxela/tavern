@@ -5,7 +5,8 @@ import {
   Text,
   View,
   TextInput,
-  Switch
+  Switch,
+  ScrollView
 } from 'react-native';
 import { Actions } from 'react-native-router-flux'
 
@@ -61,6 +62,7 @@ export default class CreateTask extends Component {
   render() {
     return (
       <View style={styles.container}>
+        <ScrollView>
           <TextInput
             ref="titleInput"
             style={styles.textInput}
@@ -92,6 +94,7 @@ export default class CreateTask extends Component {
               onValueChange={(value) => this.setState({isCompleted: value})}
             />
           </View>
+        </ScrollView>
       </View>
     )
   }
